@@ -59,7 +59,6 @@ public class View extends JFrame {
 
     }
 
-
     public static void main(String[] args) {
         text = "A JTextArea object represents a multiline area for displaying text. "
                 + "You can change the number of lines that can be displayed at a time, "

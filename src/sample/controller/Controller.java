@@ -4,7 +4,6 @@ package sample.controller;
 
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
-
 import org.jnativehook.dispatcher.SwingDispatchService;
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
