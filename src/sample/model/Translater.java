@@ -26,7 +26,7 @@ key=<API-ключ>
 public class Translater {
 
     private final String USER_AGENT = "Mozilla/5.0";
-    private final String KEY = "trnsl.1.1.20170903T104814Z.3f337c1f825e0053.44b1227f43bfdd393e36103b56b9775bcbefe8c4";
+    private final String KEY = "***"; //write your api key here
     private final String URL = "https://translate.yandex.net/api/v1.5/tr/translate?key=";
 
 
