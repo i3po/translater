@@ -2,12 +2,14 @@ package sample.model;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import sample.controller.Controller;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -25,8 +27,9 @@ key=<API-ключ>
 
 public class Translater {
 
+
     private final String USER_AGENT = "Mozilla/5.0";
-    private final String KEY = "***"; //write your api key here
+    private final String KEY = Controller.readFromFileSettings(); //write your api key here
     private final String URL = "https://translate.yandex.net/api/v1.5/tr/translate?key=";
 
 
@@ -41,8 +44,15 @@ public class Translater {
         }
     }*/
 
+    public Translater() {
+        System.out.println("Api Secret: " + KEY);
+    }
+
     public String tanslate(String text) throws Exception {
+        System.out.println(text + " dshgfjhf");
+        if(text.length() > 1)
         return  sendPost(text);
+        return "Error Occurred";
 
     }
 
@@ -72,10 +82,11 @@ public class Translater {
         wr.flush();
         wr.close();
 
-//        int responseCode = con.getResponseCode();
-//        System.out.println("\nSending 'POST' request to URL : " + URL + "<key>");
-//        System.out.println("Post parameters : " + urlParameters);
-//        System.out.println("Response Code : " + responseCode);
+       int responseCode = con.getResponseCode();
+
+        System.out.println("\nSending 'POST' request to URL : " + URL + "<key>");
+        System.out.println("Post parameters : " + urlParameters);
+        System.out.println("Response Code : " + responseCode);
 
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(con.getInputStream()));
