@@ -49,7 +49,6 @@ public class Translater {
     }
 
     public String tanslate(String text) throws Exception {
-        System.out.println(text + " dshgfjhf");
         if(text.length() > 1)
         return  sendPost(text);
         return "Error Occurred";
