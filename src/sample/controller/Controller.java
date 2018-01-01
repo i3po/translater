@@ -14,7 +14,6 @@ import sample.model.Model;
 import sample.view.View;
 
 
-import java.io.BufferedReader;
 import java.io.File;
 
 import java.io.IOException;
@@ -23,8 +22,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static java.nio.file.Files.newBufferedReader;
-import static java.nio.file.Files.readAllLines;
 
 
 /**
@@ -127,8 +124,12 @@ public class Controller implements NativeKeyListener, NativeMouseInputListener{
     }
 
     public  static String readFromFileSettings(){
-        File file = new File("./src/settings.json");
+        File file = new File("./settings.json");
         try {
+            if(!file.exists()){
+                Files.createFile(file.toPath());
+                System.out.println(file + " created");
+            }
             List<String> strings =  Files.readAllLines(file.toPath());
             StringBuffer stringBuffer = new StringBuffer();
             for(String s : strings)stringBuffer.append(s);
@@ -148,6 +149,7 @@ public class Controller implements NativeKeyListener, NativeMouseInputListener{
                 && (nativeMouseEvent.getClickCount() == 2)
                 && (modifiers == NUM) || (modifiers == CAPSNUM));
     }
+
     @Override
     public void nativeMouseReleased(NativeMouseEvent nativeMouseEvent) {
         //System.out.println(nativeMouseEvent);
