@@ -1,7 +1,7 @@
-package sample.view;
+package view;
 
 
-import sample.controller.Controller;
+import controller.Controller;
 
 
 import javax.swing.*;
@@ -9,7 +9,7 @@ import java.awt.*;
 
 
 public class View extends JFrame {
-    private Controller controller;
+   private Controller controller;
    static  String text;
    private JTextArea textArea;
 

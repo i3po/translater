@@ -1,8 +1,8 @@
-package sample.model;
+package model;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import sample.controller.Controller;
+import controller.Controller;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;

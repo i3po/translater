@@ -1,6 +1,6 @@
-package sample.model;
+package model;
 
-import sample.controller.Controller;
+import controller.Controller;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;

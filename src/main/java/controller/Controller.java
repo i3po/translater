@@ -1,4 +1,4 @@
-package sample.controller;
+package controller;
 
 
 
@@ -10,8 +10,8 @@ import org.jnativehook.keyboard.NativeKeyListener;
 import org.jnativehook.mouse.*;
 
 import org.json.JSONObject;
-import sample.model.Model;
-import sample.view.View;
+import model.Model;
+import view.View;
 
 
 import java.io.File;
@@ -35,6 +35,7 @@ public class Controller implements NativeKeyListener, NativeMouseInputListener{
     private Model model;
     final static int NUM = 8448;
     final static int CAPSNUM = 24832;
+    final static int CTRL_L = 29;
 
 
     public static void main(String[] args) throws NativeHookException{
@@ -81,7 +82,7 @@ public class Controller implements NativeKeyListener, NativeMouseInputListener{
     public void nativeKeyPressed(NativeKeyEvent nativeKeyEvent) {
           System.out.println(nativeKeyEvent.getKeyCode());
         switch (nativeKeyEvent.getKeyCode()){
-            case 3653: {
+            case CTRL_L: {
                 doAction();
                 break;
             }
