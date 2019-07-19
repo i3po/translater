@@ -66,7 +66,10 @@ public class Controller implements NativeKeyListener, NativeMouseInputListener{
             String translatedTExt = model.translateText();
             System.out.println("Translated text: " + translatedTExt);
             if(translatedTExt != null && translatedTExt.length() > 1) view.initializeView(translatedTExt);
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
+            throw e;
+        }
+        catch (Exception e) {
             e.getCause();
         }
     }

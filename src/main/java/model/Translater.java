@@ -52,7 +52,6 @@ public class Translater {
         if(text.length() > 1)
         return  sendPost(text);
         return "Error Occurred";
-
     }
 
     private HttpsURLConnection getConnection(String urll) throws IOException {
@@ -86,6 +85,10 @@ public class Translater {
         System.out.println("\nSending 'POST' request to URL : " + URL + "<key>");
         System.out.println("Post parameters : " + urlParameters);
         System.out.println("Response Code : " + responseCode);
+
+        if(responseCode == 403) {
+            throw new RuntimeException("Wrong API key in settings.json, please edit api key");
+        }
 
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(con.getInputStream()));
