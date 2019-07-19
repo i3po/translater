@@ -15,6 +15,7 @@ public class View extends JFrame {
 
 
     public View(Controller controller) {
+        this.setTitle("Eng -> Ru translator");
         setAlwaysOnTop(true);
         setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         JPanel panel = new JPanel();

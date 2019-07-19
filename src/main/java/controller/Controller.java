@@ -33,9 +33,9 @@ import java.util.logging.Logger;
 public class Controller implements NativeKeyListener, NativeMouseInputListener{
     private View view;
     private Model model;
-    final static int NUM = 8448;
-    final static int CAPSNUM = 24832;
-    final static int CTRL_L = 29;
+    final static int NUM = 8192;
+    final static int CAPSNUM = 16384;
+    final static int ALT_L = 56;
 
 
     public static void main(String[] args) throws NativeHookException{
@@ -82,7 +82,7 @@ public class Controller implements NativeKeyListener, NativeMouseInputListener{
     public void nativeKeyPressed(NativeKeyEvent nativeKeyEvent) {
           System.out.println(nativeKeyEvent.getKeyCode());
         switch (nativeKeyEvent.getKeyCode()){
-            case CTRL_L: {
+            case ALT_L: {
                 doAction();
                 break;
             }
@@ -112,14 +112,6 @@ public class Controller implements NativeKeyListener, NativeMouseInputListener{
 
 
    public void nativeMousePressed(NativeMouseEvent nativeMouseEvent) {
-       /**
-        System.out.println("Method Pressed");
-        System.out.println(nativeMouseEvent.getModifiers() + " " + nativeMouseEvent.getButton() + " " + nativeMouseEvent.getClickCount());
-        //System.out.println(nativeMouseEvent.paramString());
-        if(isConditionPassed(nativeMouseEvent)) {
-            doAction();
-            return;
-        } **/
         if(view.isVisible())view.deInitialize();
 
     }
@@ -145,15 +137,14 @@ public class Controller implements NativeKeyListener, NativeMouseInputListener{
 
     private boolean isConditionPassed(NativeMouseEvent nativeMouseEvent){
         int modifiers = nativeMouseEvent.getModifiers();
-        System.out.println(nativeMouseEvent.paramString() + " " + nativeMouseEvent.getButton() + " " + nativeMouseEvent.getPoint().toString());
-        return  ((nativeMouseEvent.getButton() == NativeMouseEvent.BUTTON1)
-                && (nativeMouseEvent.getClickCount() == 2)
-                && (modifiers == NUM) || (modifiers == CAPSNUM));
+        return  ((nativeMouseEvent.getClickCount() == 2) && ((modifiers == NUM) || modifiers == (NUM + CAPSNUM)));
     }
 
     @Override
     public void nativeMouseReleased(NativeMouseEvent nativeMouseEvent) {
-        //System.out.println(nativeMouseEvent);
+        if (isConditionPassed(nativeMouseEvent)) {
+            doAction();
+        }
     }
 
     @Override

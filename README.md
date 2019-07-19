@@ -4,6 +4,6 @@ may translate texty from any place, like console, pdf reader e.t.c
 
 set yandex translater API key to settings.json
 start controller.main
-select text in any place
-press left ctrl to translate
+select text in any place and press alt left to translate
+or double click word to translate (only if NUM_LOCK PRESSED)
 mouse click to close window with text
