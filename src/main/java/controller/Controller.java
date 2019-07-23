@@ -83,10 +83,16 @@ public class Controller implements NativeKeyListener, NativeMouseInputListener{
 
       @Override
     public void nativeKeyPressed(NativeKeyEvent nativeKeyEvent) {
-          System.out.println(nativeKeyEvent.getKeyCode());
+        System.out.println(nativeKeyEvent.getKeyCode());
+        int modifers =  nativeKeyEvent.getModifiers();
+        modifers -= 8;
+          System.out.println("NUM: " + NUM + " caps: " + CAPSNUM);
+          System.out.println("Modifesr " + modifers);
         switch (nativeKeyEvent.getKeyCode()){
             case ALT_L: {
-                doAction();
+                if (((modifers == NUM) || modifers == (NUM + CAPSNUM))) {
+                    doAction();
+                }
                 break;
             }
           default: {
